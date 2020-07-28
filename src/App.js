@@ -7,10 +7,18 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>
+    <div style={{ background: "#141414"}}>
       <Menu />
-      <BannerMain />
-      <Carousel />
+      <BannerMain 
+        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
+        url={dadosIniciais.categorias[0].videos[0].url}
+        videoDescription={" "}
+      />
+      
+      <Carousel 
+        ignoreFirstVideo
+        category={dadosIniciais.categorias[0]}
+      />
       <Footer />
     </div>
   );
