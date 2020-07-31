@@ -34,7 +34,9 @@ function CadastroCategoria() {
     fetch(URL)
       .then(async (respostaDoServ) => {
         const resposta = await respostaDoServ.json();
-        setCategorias(resposta);
+        setCategorias([
+          ...resposta,
+        ]);
       });
   }, []);
 
