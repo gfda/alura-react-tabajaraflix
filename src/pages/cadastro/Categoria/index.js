@@ -29,7 +29,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'https://localhost:8080/categorias'
+      : 'https://tabajaraflix.herokuapp.com/';
 
     fetch(URL)
       .then(async (respostaDoServ) => {
