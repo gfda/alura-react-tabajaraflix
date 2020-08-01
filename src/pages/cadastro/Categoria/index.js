@@ -12,7 +12,7 @@ function CadastroCategoria() {
     cor: '',
   };
 
-  const { funcaoHandler, valores, clearForm } = useForm(valoresIniciais);
+  const { funcaoHandler, values, clearForm } = useForm(valoresIniciais);
 
   const [categorias, setCategorias] = useState([]);
 
@@ -34,14 +34,14 @@ function CadastroCategoria() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {valores.nome}
+        {values.nome}
       </h1>
 
       <form onSubmit={function handleSubmit(infosDoEvento) {
         infosDoEvento.preventDefault();
         setCategorias([
           ...categorias,
-          valores,
+          values,
         ]);
 
         clearForm();
@@ -51,14 +51,14 @@ function CadastroCategoria() {
           label="Nome da Categoria:"
           type="text"
           name="nome"
-          value={valores.nome}
+          value={values.nome}
           onChange={funcaoHandler}
         />
         <FormField
           label="Descrição:"
           type="textarea"
           name="descricao"
-          value={valores.descricao}
+          value={values.descricao}
           onChange={funcaoHandler}
         />
 
@@ -66,7 +66,7 @@ function CadastroCategoria() {
           label="Cor:"
           type="color"
           name="cor"
-          value={valores.cor}
+          value={values.cor}
           onChange={funcaoHandler}
         />
 

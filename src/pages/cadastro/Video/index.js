@@ -31,11 +31,13 @@ function CadastroVideo() {
 
       <form onSubmit={(event) => {
         event.preventDefault();
-        const categoriaEscolhida = categorias.find((categoria) => categoria.titulo === values.categoria);
+        const categoriaEscolhida = categorias.find((categoria) => {
+          return categoria.titulo === values.categoria;
+        });
         videosRepository.create({
           titulo: values.titulo,
           url: values.url,
-          categoriaId: 1,
+          categoriaId: categoriaEscolhida.id,
         })
           .then(() => {
             history.push('/');
