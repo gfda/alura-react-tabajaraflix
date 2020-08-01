@@ -12,7 +12,6 @@ ReactDOM.render(
       <Route path="/" component={Home} exact />
       <Route path="/cadastro/video" component={CadastroVideo} />
       <Route path="/cadastro/categoria" component={CadastroCategoria} />
-
       <Route component={() => (<div>404 - Not Found</div>)} />
     </Switch>
   </BrowserRouter>,
