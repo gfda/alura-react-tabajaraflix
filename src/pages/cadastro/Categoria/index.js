@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,27 +12,14 @@ function CadastroCategoria() {
     cor: '',
   };
 
+  const { funcaoHandler, valores, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [valores, setValores] = useState(valoresIniciais);
-
-  function setValor(chave, valor) {
-    setValores({
-      ...valores,
-      [chave]: valor,
-    });
-  }
-
-  function funcaoHandler(infosDoEvento) {
-    setValor(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value,
-    );
-  }
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
       ? 'https://localhost:8080/categorias'
-      : 'https://tabajaraflix.herokuapp.com/';
+      : 'https://tabajaraflix.herokuapp.com/categorias';
 
     fetch(URL)
       .then(async (respostaDoServ) => {
@@ -56,7 +44,7 @@ function CadastroCategoria() {
           valores,
         ]);
 
-        setValores({ valoresIniciais });
+        clearForm();
       }}
       >
         <FormField
